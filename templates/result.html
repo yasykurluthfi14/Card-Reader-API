@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil OCR dan Akurasi</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* CSS styling for formatting the OCR result */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .image-container {
+            text-align: center;
+        }
+
+        .image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .formatted-ocr-result {
+            white-space: pre-wrap;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .accuracy {
+            font-size: 16px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .accuracy strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hasil OCR dan Akurasi</h1>
+    </header>
+
+    <div class="container">
+        <div class="image-container">
+            <h2>Gambar yang Telah Diproses</h2>
+            <img src="{{ url_for('static', filename='results/restored_image.jpg') }}" class="image" alt="Gambar yang Telah Diproses">
+        </div>
+        <div class="output-text">
+            <h2>Hasil OCR:</h2>
+            <pre class="formatted-ocr-result">{{ ocr_result['text'] }}</pre>
+            <div class="accuracy">
+                <strong>Akurasi:</strong> {{ ocr_result['accuracy'] }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
